@@ -1,0 +1,178 @@
+{% from "_form_helpers.html" import render_textarea %}
+<div id="container">
+{% extends "layout/main.html" %}
+
+
+{% block body %}
+
+
+<div class="row">
+
+	<div class="row">
+	<span class="subtitle"> How <a href="http://www.hungryfr.com">hungryfr.com</a> works</span>
+	<p>Tell us what you are hungryfr and up to 3 people can join you! Not sure what you're hungryfr?  Join someone else's trip!</p>
+	<br />
+	
+	</div>
+
+	<!-- div with form-->
+	<div class="span6">
+		
+
+		<form method="POST" action="/">
+			<legend><span class="subtitle">What are you hungryfr?</span></legend>
+			
+			<br />
+			
+			{% if form.errors %}
+
+			    <ul class="errors">
+			        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+			            {% for error in field_errors %}
+			                <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
+			            {% endfor %}
+			        {% endfor %}
+			    </ul>
+			{% endif %}
+
+			{{ form.creator.label(class='myLabelCssClass', placeholder='Name') }}
+			{{ form.creator(class='myTextboxCssClass') }}
+			
+			<!--
+			<label for="creator">First Name</label>
+			<input type="text" id="creator" name="creator" value="{{ form.creator }}">
+			-->
+			
+			{{ form.title.label(class='myLabelCssClass') }}
+			{{ form.title(class='myTextboxCssClass') }}
+			
+			<!--
+			<label for="title">Project Title</label>
+			<input type="text" id="title" name="title">
+			-->
+			
+
+			<!-- {{ form.idea.label }}
+			{{ form.idea(class='myTextboxCssClass') }} -->
+
+			<!-- {{ render_textarea(form.idea, cols="50", rows="1") }} {# render_textarea inside _form_helpers.html #} -->
+
+
+
+			{{ form.timeHour2.label }}
+			{{ form.timeHour2() }}
+
+			
+
+
+			<!--
+			<label for="duration">Project Title</label>
+			<input type="text" id="title" name="title">
+			-->
+			{{ form.duration.label }}
+			{{ form.duration(class='myTextboxCssClass') }}
+
+			<!-- Commenting out categories checkboxes
+			<br>
+			<label>Category</label>
+			<span class="help-block">Select as many as you need.</span>
+
+			
+			{# comment - loop through categories and create checkboxes #}
+			{% for c in categories|sort %}
+			<label class="checkbox">
+			<input type="checkbox" name="categories" value="{{ c|replace(" ","_") }}" {% if c|replace(" ","_") in form.categories.data %}checked=checked{% endif %} > {{ c|title }}
+			</label>
+			{% endfor %} -->
+
+
+			<button type="submit" class="btn btn-primary">Let's Go!</button>
+		</form>
+	</div>
+
+	<!-- div with departures-->
+	<!-- left column -->
+	
+		<br />
+
+	<span class="subtitle">Departures</span>
+	<br />
+	<br />
+	<div class="board">
+	
+	<hr>
+	<div class="posttitles">
+	
+	<table table rules="rows">
+			<tr>
+			<th class="noneseatcell">Hungryfr</th>
+			<th class="noneseatcell">Passengers</th>
+			<th class="noneseatcell">Leaving in</th>
+			<th class="noneseatcell">Duration</th>
+			<th>Seats <br />Filled</th>
+			<th>Seats <br />Left</th>
+			</tr>
+		
+	</div>
+		
+			{% for idea in ideas %}
+		
+	<div class="post">
+		
+		<tr>
+		<td><span class="infoone">{{ idea.title }}</span></td>
+		<td><span class="info">{{ idea.creator }}, 
+			{% for c in idea.comments %}
+			{{ c.name }}, 
+			{% endfor %} 
+		</span></td>
+		<td><span class="info">{% print ((idea.deadline-currentTime).seconds/60)|round|int %} minutes</span></td>
+		<td><span class="info">{{ idea.duration }}</span></td>
+		<td class="seatcell"><span class="info">{{ idea.comments|length + 1}}</span></td>
+		<td class="seatcell"><span class="info">{{ 3 - idea.comments|length }}</span></td>
+		<!-- <td><a class="label" href="/hungryfr/{{ idea.slug }}/edit">edit</a></span></td> -->
+		<td><form method="POST"  style="display:inline" action="/hungryfr/{{ idea.id }}/comment">
+					<label for="name" class="join">Join this trip! </label>
+					<input type="text" id="name" name="name" placeholder='Your Name'>
+					<button type="submit" class="btn btn-success">Let's go!</button>
+					
+				</form></td>
+				
+		</tr>
+		
+		
+	</div>
+			
+				<!-- <span class="item">{{ idea.timeHour }}:{{ idea.timeMinute }}{{ idea.timeAmPm }}</span> -->
+				<!-- {{ idea.comments|length + 1}} -->
+				
+					
+					<!-- <label for="comment">Comment</label>
+					<textarea cols="50" rows="6" id="comment" name="comment"></textarea> -->
+					
+			
+
+			<!-- <h4><a href="/hungryfr/{{ idea.slug }}">Join this trip!</a></h4> -->
+			<!-- <p>by {{ idea.creator }}</p> -->
+			
+			<!-- {% for cat in idea.categories %}
+				<span class="label label-inverse"><a href="/category/{{ cat}}">{{ cat|replace("_"," ")}}</a></span>
+			{% endfor %} -->
+	</div>	  
+		
+		{% endfor %}
+
+	</table>
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block styles %}{% endblock %}
+{% block scripts %}{% endblock %}

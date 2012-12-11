@@ -1,0 +1,99 @@
+{% from "_form_helpers.html" import render_textarea %}
+<div id="container">
+{% extends "layout/main.html" %}
+
+
+{% block body %}
+
+<div class="row">
+
+	<!-- div with departures-->
+	<!-- left column -->
+	
+		<br />
+	<span class="subtitle">Departures</span>
+	<br />
+	<br />
+	<div class="board">
+	
+	<hr>
+	<div class="posttitles">
+	
+	<table table rules="rows">
+			<tr>
+			<th class="noneseatcell">Hungryfr</span> </th>
+			<th class="noneseatcell">Passengers</th>
+			<th class="noneseatcell">Leaving At</span></th>
+			<th class="noneseatcell">Duration</span></th>
+			<th>Seats <br />Filled</span></th>
+			<th>Seats <br />Left</span></th>
+			</tr>
+		
+	</div>
+		
+			{% for idea in ideas %}
+		
+	<div class="post">
+		
+		<tr>
+		<td><span class="infoone">{{ idea.title }}</span></td>
+		<td><span class="info">{{ idea.creator }}, 
+			{% for c in idea.comments %}
+			{{ c.name }}, 
+			{% endfor %} 
+		</span></td>
+		<td><span class="info">{% print ((idea.deadline-currentTime).seconds/60)|round|int %} minutes</span></td>
+		<td><span class="info">{{ idea.duration }}</span></td>
+		<td><span class="info">{{ idea.comments|length + 1}}</span></td>
+		<td><span class="info">{{ 3 - idea.comments|length }}</span></td>
+<!-- 		<td><form method="POST"  style="display:inline" action="/hungryfr/{{ idea.id }}/comment" >
+					<label for="name" class="join">Join this trip! </label>
+					<input type="text" id="name" name="name" placeholder='Your Name' >
+					<button type="submit" class="btn btn-success">Let's go!</button>
+					
+				</form></td> -->
+				
+		</tr>
+		
+		
+	</div>
+		
+	
+	
+	
+	
+			
+				<!-- <span class="item">{{ idea.timeHour }}:{{ idea.timeMinute }}{{ idea.timeAmPm }}</span> -->
+				<!-- {{ idea.comments|length + 1}} -->
+				
+					
+					<!-- <label for="comment">Comment</label>
+					<textarea cols="50" rows="6" id="comment" name="comment"></textarea> -->
+					
+			
+
+			<!-- <h4><a href="/hungryfr/{{ idea.slug }}">Join this trip!</a></h4> -->
+			<!-- <p>by {{ idea.creator }}</p> -->
+			
+			<!-- {% for cat in idea.categories %}
+				<span class="label label-inverse"><a href="/category/{{ cat}}">{{ cat|replace("_"," ")}}</a></span>
+			{% endfor %} -->
+	</div>	  
+		
+		{% endfor %}
+
+	</table>
+			
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block styles %}{% endblock %}
+{% block scripts %}{% endblock %}

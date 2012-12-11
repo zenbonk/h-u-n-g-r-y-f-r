@@ -1,0 +1,112 @@
+{% extends "layout/main.html" %}
+
+
+{% block body %}
+<div id="text">
+		<h2>Twilio example, form to sms</h2>
+		<form method="POST">
+		<label>Send a txt msg. Be nice.</label>
+		<br>
+		<label for="telephone">Enter your phone number</label>
+		<input type="tel" id="telephone" name="telephone"> (eg. 19174561234)<br>
+
+		<label for="sms_text">SMS Message</label>
+		<input type="text" id="sms_text" name="sms_text"><br>
+		<input type="submit" class="btn" value="send it">
+	</form>
+</div>
+
+<hr>
+
+<div class="row">
+	
+	<div id="pass">
+		
+		<div id="passcontent">
+		
+			<div class="passtext">
+			
+				<div id="passheader">
+				<img src="{{ url_for('static', filename='img/smallLogo.png') }}"/>
+				<h1>BOARDING PASS</h1>
+				</div>
+			
+				<div id="tripinfoleft">
+				<p class="title">leaving in</p>
+				<br />
+				<span class="hungryfrinput">
+			 		{% print ((idea.deadline-currentTime).seconds/60)|round|int %} minutes</span>
+				<br />
+				<br />
+				<br />
+				<p class="title">current passengers</p>
+				<br />
+				<span class="hungryfrinput">
+				{{ idea.creator }}, 
+				{% for c in idea.comments %}
+				{{ c.name }}, 
+				{% endfor %} 
+				</span>
+				</div>
+			
+				<div id="tripinforight">
+				<p class="title">hungry for</p>
+				<br />
+				<span class="hungryfrinput">{{ idea.title }}</span>   
+			 	<br />
+				<br />
+				<br />
+			 	<p class="title">trip duration</p>
+			 	<br />
+			 	<span class="hungryfrinput">{{ idea.duration }}</span> 
+				</div>
+			
+				<div class="clear">
+				</div>	
+				
+				<div id="passfooter">
+				<p class="title">check-in</p>
+				<p><strong>Meeting point</strong> in ITP lounge, next to the foosball table (see map).</p>
+				</div>
+		
+		<!-- <p>
+			<ul>
+			{% for c in idea.categories %}
+			<li>{{ c|replace("_"," ") }}</li>
+			{% endfor %}
+			</ul>
+		</p> -->
+
+		<!-- <p>added: {{ idea.timestamp }} | id: {{ idea.id }}</p> -->
+			
+			</div>
+			
+			<img src="{{ url_for('static', filename='img/line.png') }}"/>
+
+			
+			<img class="map" src="{{ url_for('static', filename='img/map.png') }}"/>
+
+			<div class="clear">
+			</div>	
+			
+		</div>
+		
+		
+	</div>
+		
+		<br>
+		
+		<form align="center">
+		<input type="button" value="Print Your Boarding Pass" onClick="window.print()"/>
+		</form>
+		
+		<div class="backlink">
+		<a href="/">Back to Departures</a>
+		</div>
+</div>
+
+{% endblock %}
+
+
+{% block styles %}{% endblock %}
+{% block scripts %}{% endblock %}

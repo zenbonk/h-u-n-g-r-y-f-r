@@ -1,0 +1,268 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@font-face {
+font-family: ApexBold;
+src: url('/static/fonts/ApexNew-Bold.otf');
+} 
+
+@font-face {
+font-family: ApexBook;
+src: url('/static/fonts/ApexNew-Book.otf');
+} 
+
+@font-face {
+font-family: Apex;
+src: url('/static/fonts/ApexNew-Medium.otf');
+} 
+
+@font-face {
+font-family: Apexltita;
+src: url('/static/fonts/ApexNew-LightItalic.otf');
+} 
+
+body{
+	background-image:url('/static/img/bg.png');	
+	font-family: Apex;
+}
+
+#container{
+	width:1000px;
+	margin: 0 auto;
+}
+
+.subtitle{
+	font-family: ApexBook;
+	color: #cc3232;
+	font-size: 1.7em;
+}
+
+.subtitle a{
+font-size:1.0em;
+color: #cc3232;
+}
+
+.subtitle a:hover{
+font-size:1.0em;
+color: black;
+text-decoration:none;
+}
+
+.board{
+font-size: 1em;
+text-transform: uppercase;
+}
+
+.posttitles{
+font-family: ApexBold;
+color: #663300;
+}
+
+.info{
+font-size:.9em;
+color: black;
+}
+
+.infoone{
+font-size:.9em;
+color: #cc3232;
+}
+
+a{
+font-size:.7em;
+color: black;
+}
+
+a:hover{
+font-size:.7em;
+color: #cc3232;
+text-decoration:none;
+}
+
+.join{
+font-size:.8em;
+color: #cc3232;
+}
+
+table{
+text-align:left;
+}
+
+th{
+color: #663300;
+padding-bottom: 10px;
+}
+
+td, th{
+padding:10px;
+}
+
+th.noneseatcell{
+padding-left: 10px;
+padding-right: 10px;
+}
+
+hr{
+border: 0; 
+border-top: 1px solid black;
+}
+
+/*Boarding Pass Styles*/
+
+#text{
+margin-left:20px;
+}
+
+#pass{
+border: 1px solid brown;
+background-color:#ffffff;
+width: 840px;
+height: 100%;
+margin: 0 auto;
+}
+
+#passcontent{
+border: 0px solid pink;
+margin: 20px;
+}
+
+#passcontent h1{
+font-family:Apexltita;
+display:inline;
+float:right;
+color:#663300;
+margin-top:27px;
+margin-right:27px;
+}
+
+#tripinfoleft{
+border: 0px solid green;
+width:302px;
+height:210px;
+float:left;
+margin-right:15px;
+overflow:hidden;
+}
+
+#tripinforight{
+border: 0px solid green;
+width:302px;
+height:210px;
+float:left;
+overflow:hidden;
+}
+
+.backlink{
+margin: 0 auto;
+font-size: 2em;
+width: 180px;
+margin-top:20px;
+}
+
+.backlink:hover{
+margin: 0 auto;
+font-size: 2em;
+color: #cc3232;
+width: 180px;
+margin-top:20px;
+}
+
+.passtext{
+border: 0px solid orange;
+float:left;
+width: 622px;
+}
+
+#passheader{
+margin-bottom:10px;
+border: 0px solid pink;
+width:590px;
+}
+
+.title{
+color:#663300;
+font-size:1em;
+margin:0;
+}
+
+.hungryfrinput{
+color: #cc3232;
+font-family:ApexBook;
+font-size: 1.4em;
+}
+
+.hungryfrinput:nth-child(3){
+color: #cc3232;
+font-family:ApexBook;
+font-size: 2.4em;
+}
+
+#passfooter{
+color: #cc3232;
+border: 0px solid pink;
+width:590px;
+}
+
+.map{
+border: 1px solid lightgray;
+margin-left:8px;
+}
+
+.clear{
+clear:both;
+}
+
+/*Kiosk Styles*/
+
+#kioskform{
+margin-top:20px;
+font-size:1.5em;
+line-height:1.8em;
+text-align: center;
+}
+
+
+#kiosk{
+text-align: center;
+}
+
+#kiosk p{
+line-height:1.5em;
+}
+
+#kiosk button{
+   margin-top:30px;
+   background: #b55959;
+   background: -webkit-gradient(linear, left top, left bottom, from(#8c0202), to(#b55959));
+   background: -webkit-linear-gradient(top, #8c0202, #b55959);
+   background: -moz-linear-gradient(top, #8c0202, #b55959);
+   background: -ms-linear-gradient(top, #8c0202, #b55959);
+   background: -o-linear-gradient(top, #8c0202, #b55959);
+   padding: 12px 30px;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   color: white;
+   font-size: 15px;
+   font-family: Apexltita;
+   text-decoration: none;
+   vertical-align: middle;
+   border:none;
+   }
+
+#kiosk button:active {
+   background: #8c0000;
+}
+
+#kiosk input[type=text]{
+padding:5px;
+border:solid 1px brown;
+width:170px;
+}
+
+
+
+

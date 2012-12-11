@@ -1,0 +1,107 @@
+<div id="kiosk">	
+{% from "_form_helpers.html" import render_textarea %}
+<div id="container">
+{% extends "layout/main.html" %}
+
+
+{% block body %}
+<br>
+	
+	<div class="row">
+
+	<div class="row">
+	<span class="subtitle"> How <a href="http://www.hungryfr.com">hungryfr.com</a> works</span>
+	<p>Tell us what you are hungryfr and up to 3 people can join you!
+	<br />
+	Not sure what you're hungryfr?  Join someone else's trip!</p>
+	<br />
+	<br />
+	
+	</div>
+
+	<!-- div with form-->
+		
+		<form method="POST" action="/">
+			<span class="subtitle">What are you hungryfr?</span>
+		
+		<div id="kioskform">	
+					
+			{% if form.errors %}
+
+			    <ul class="errors">
+			        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+			            {% for error in field_errors %}
+			                <li class="alert">{{ form[field_name].label }}: {{ error }}</li>
+			            {% endfor %}
+			        {% endfor %}
+			    </ul>
+			{% endif %}
+
+			{{ form.creator.label(class='myLabelCssClass', placeholder='Name') }}
+			{{ form.creator(class='myTextboxCssClass') }}
+			
+			<!--
+			<label for="creator">First Name</label>
+			<input type="text" id="creator" name="creator" value="{{ form.creator }}">
+			-->
+			<br>
+			{{ form.title.label(class='myLabelCssClass') }}
+			{{ form.title(class='myTextboxCssClass') }}
+			<br>
+			<!--
+			<label for="title">Project Title</label>
+			<input type="text" id="title" name="title">
+			-->
+			
+
+			<!-- {{ form.idea.label }}
+			{{ form.idea(class='myTextboxCssClass') }} -->
+
+			<!-- {{ render_textarea(form.idea, cols="50", rows="1") }} {# render_textarea inside _form_helpers.html #} -->
+
+
+
+			{{ form.timeHour2.label }}
+			{{ form.timeHour2() }}
+			<br>
+			
+
+
+			<!--
+			<label for="duration">Project Title</label>
+			<input type="text" id="title" name="title">
+			-->
+			{{ form.duration.label }}
+			{{ form.duration(class='myTextboxCssClass') }}
+			<br>
+			<!-- Commenting out categories checkboxes
+			<br>
+			<label>Category</label>
+			<span class="help-block">Select as many as you need.</span>
+
+			
+			{# comment - loop through categories and create checkboxes #}
+			{% for c in categories|sort %}
+			<label class="checkbox">
+			<input type="checkbox" name="categories" value="{{ c|replace(" ","_") }}" {% if c|replace(" ","_") in form.categories.data %}checked=checked{% endif %} > {{ c|title }}
+			</label>
+			{% endfor %} -->
+
+
+			<button type="submit" class="btn btn-primary">Let's Go!</button>
+		</form>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block styles %}{% endblock %}
+{% block scripts %}{% endblock %}
